@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE PHOENIX — Continuous Cinematic Journey</title>
+    <meta name="description" content="A continuous cinematic interactive journey through the eternal cycle of the Phoenix: from deep earth lava to the serene ethereal sky." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Custom Interactive Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-glow"></div>
+
+    <!-- Cinematic Loading Screen -->
+    <div id="loader" class="loader-active">
+      <div class="loader-bg-glow"></div>
+      <div class="loader-content">
+        <div class="loader-ember-icon">
+          <div class="ember-pulse-core"></div>
+          <div class="ember-ring-1"></div>
+          <div class="ember-ring-2"></div>
+        </div>
+        <h1 class="loader-title">PHOENIX</h1>
+        <p class="loader-subtitle" id="loader-status">IGNITING THE ANCIENT FLAME...</p>
+        <div class="loader-bar-container">
+          <div class="loader-bar-fill" id="loader-bar"></div>
+        </div>
+        <div class="loader-percent" id="loader-pct">0%</div>
+      </div>
+    </div>
+
+    <!-- WebGL Canvas -->
+    <canvas id="webgl"></canvas>
+
+    <!-- Cinematic Vignette Overlay -->
+    <div class="cinematic-vignette"></div>
+
+    <!-- Minimalist HUD Header -->
+    <header class="hud-header">
+      <div class="hud-brand">
+        <span class="hud-brand-dot"></span>
+        <span class="hud-brand-text">PHOENIX</span>
+      </div>
+
+      <div class="hud-right-controls">
+        <button id="sound-toggle" class="hud-btn sound-btn" aria-label="Toggle Sound">
+          <span class="sound-bars">
+            <span class="sound-bar b1"></span>
+            <span class="sound-bar b2"></span>
+            <span class="sound-bar b3"></span>
+            <span class="sound-bar b4"></span>
+          </span>
+          <span class="sound-label" id="sound-label">SOUND OFF</span>
+        </button>
+
+        <div class="hud-chapter-badge">
+          <span class="hud-chapter-num" id="hud-chapter-num">01 / 11</span>
+          <span class="hud-chapter-name" id="hud-chapter-name">THE DEEP EARTH</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- HUD Footer -->
+    <footer class="hud-footer">
+      <div class="hud-scroll-hint" id="hud-scroll-hint">
+        <div class="scroll-mouse-icon">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span class="scroll-text">SCROLL TO ADVANCE JOURNEY</span>
+      </div>
+
+      <div class="hud-progress-container" title="Continuous circular journey">
+        <span class="hud-progress-pct" id="hud-progress-pct">0%</span>
+        <div class="hud-progress-bar">
+          <div class="hud-progress-fill" id="hud-progress-fill"></div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Fixed Viewport for Cinematic Narrative Typography -->
+    <div id="story-viewport" class="story-viewport">
+
+      <!-- SCENE 1: THE DEEP EARTH (0.00 - 0.08) -->
+      <section class="story-block" data-start="0.00" data-end="0.08" id="scene-deep-earth">
+        <div class="narrative-wrap">
+          <h2 class="story-heading cinematic-fade">"BEFORE THE SKY..."</h2>
+        </div>
+      </section>
+
+      <!-- SCENE 2: THE FEATHER (0.08 - 0.18) -->
+      <section class="story-block" data-start="0.08" data-end="0.18" id="scene-feather">
+        <div class="narrative-wrap">
+          <span class="story-subheading">A SPARK EMERGES</span>
+        </div>
+      </section>
+
+      <!-- SCENE 3: THE LIGHT (0.18 - 0.28) -->
+      <section class="story-block" data-start="0.18" data-end="0.28" id="scene-light">
+        <div class="narrative-wrap">
+          <span class="story-subheading gold-accent">THE AWAKENING RESONANCE</span>
+        </div>
+      </section>
+
+      <!-- SCENE 4: TRANSFORMATION (0.28 - 0.42) -->
+      <section class="story-block" data-start="0.28" data-end="0.42" id="scene-transform">
+        <div class="narrative-wrap">
+          <span class="story-subheading gold-accent">STRUCTURE TAKES FLIGHT</span>
+        </div>
+      </section>
+
+      <!-- SCENE 5: THE FULL PHOENIX REVEAL (0.42 - 0.58) -->
+      <section class="story-block" data-start="0.42" data-end="0.58" id="scene-reveal">
+        <div class="narrative-wrap">
+          <h2 class="story-heading phoenix-glow-title">"FROM ONE..."</h2>
+          <h2 class="story-heading gold-accent mt-3">"...BECOMES ETERNAL."</h2>
+        </div>
+      </section>
+
+      <!-- SCENE 6: THE MOMENT BEFORE FLIGHT (0.58 - 0.68) -->
+      <section class="story-block" data-start="0.58" data-end="0.68" id="scene-anticipation">
+        <div class="narrative-wrap">
+          <span class="story-subheading gold-accent">THE SKY CALLS</span>
+        </div>
+      </section>
+
+      <!-- SCENE 7: ASCENT (0.68 - 0.78) -->
+      <section class="story-block" data-start="0.68" data-end="0.78" id="scene-ascent">
+        <div class="narrative-wrap">
+          <span class="story-subheading gold-accent">ASCENT</span>
+        </div>
+      </section>
+
+      <!-- SCENE 8: BREAKING THROUGH (0.78 - 0.84) -->
+      <section class="story-block" data-start="0.78" data-end="0.84" id="scene-breakthrough">
+        <div class="narrative-wrap">
+          <span class="story-subheading">BEYOND THE STORM</span>
+        </div>
+      </section>
+
+      <!-- SCENE 9: THE CLEAR WORLD (0.84 - 0.92) -->
+      <section class="story-block" data-start="0.84" data-end="0.92" id="scene-serene-sky">
+        <div class="narrative-wrap">
+          <span class="story-subheading gold-accent">ETHEREAL FREEDOM</span>
+        </div>
+      </section>
+
+      <!-- SCENE 10: THE VANISHING (0.92 - 0.96) -->
+      <section class="story-block" data-start="0.92" data-end="0.96" id="scene-vanishing">
+        <div class="narrative-wrap">
+          <h2 class="story-heading gold-accent">"AND THE SKY OPENED."</h2>
+        </div>
+      </section>
+
+      <!-- SCENE 11: THE ENDLESS LOOP (0.96 - 1.00) -->
+      <section class="story-block" data-start="0.96" data-end="1.00" id="scene-loop">
+        <div class="narrative-wrap">
+          <span class="story-subheading">THE CYCLE RETURNS</span>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Virtual Scroll Track for Continuous Navigation -->
+    <div id="scroll-track" class="scroll-track">
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+      <div class="scroll-section"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
